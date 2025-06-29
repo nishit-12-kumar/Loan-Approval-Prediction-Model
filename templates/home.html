@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Loan Approval Prediction Form</h2>
+
+<form action="/predictdata" method="post">
+    <label>Gender:</label>
+    <select name="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+    <label>Married:</label>
+    <select name="Married">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+
+    <label>Dependents:</label>
+    <select name="Dependents">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3+">3+</option>
+    </select>
+
+    <label>Education:</label>
+    <select name="Education">
+        <option value="Graduate">Graduate</option>
+        <option value="Not Graduate">Not Graduate</option>
+    </select>
+
+    <label>Self Employed:</label>
+    <select name="Self_Employed">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+
+    <label>Applicant Income:</label>
+    <input type="number" name="ApplicantIncome" step="0.01" required>
+
+    <label>Coapplicant Income:</label>
+    <input type="number" name="CoapplicantIncome" step="0.01" required>
+
+    <label>Loan Amount (in thousands):</label>
+    <input type="number" name="LoanAmount" step="0.01" required>
+
+    <label>Loan Amount Term (months):</label>
+    <input type="number" name="Loan_Amount_Term" required>
+
+    <label>Credit History:</label>
+    <select name="Credit_History">
+        <option value="1.0">Good (1.0)</option>
+        <option value="0.0">Bad (0.0)</option>
+    </select>
+
+    <label>Property Area:</label>
+    <select name="Property_Area">
+        <option value="Urban">Urban</option>
+        <option value="Semiurban">Semiurban</option>
+        <option value="Rural">Rural</option>
+    </select>
+
+    <input type="submit" value="Predict">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #e8f0fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .result-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px #ccc;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        .status {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-box">
+    <h2>Prediction Result</h2>
+    <p class="status">{{ prediction }}</p>
+    <br>
+    <a href="/predictdata">🔁 Predict Again</a>
+</div>
+
+</body>
+</html>
