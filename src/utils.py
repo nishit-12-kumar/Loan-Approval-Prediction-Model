@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import dill
 
+from src.logger import logging
 from src.exception import CustomException
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
@@ -24,29 +25,32 @@ def save_object(file_path, obj):
 
 
 # THODA CHANGE HUAA ISME...
-def evaluate_models(X_train, y_train, X_test, y_test, models, param):
+def evaluate_models(X_train, y_train, X_test, y_test, models, params):
     try:
         report = {}
+        best_model_overall = None
+        best_score = -1
 
-        for model_name in models:
-            model = models[model_name]
-            params = param[model_name]
+        for name, model in models.items():
+            print(f"Tuning {name}...")
+            if params.get(name):
+                gs = GridSearchCV(model, params[name], cv=3, n_jobs=-1)
+                gs.fit(X_train, y_train)
+                best_model = gs.best_estimator_
+            else:
+                model.fit(X_train, y_train)
+                best_model = model
 
-            # Tune model using GridSearchCV
-            gs = GridSearchCV(model, params, cv=3, n_jobs=-1)
-            gs.fit(X_train, y_train)
+            y_pred = best_model.predict(X_test)
+            score = accuracy_score(y_test, y_pred)
+            report[name] = score
 
-            # Set best parameters
-            model.set_params(**gs.best_params_)
-            model.fit(X_train, y_train)
-
-            # Predict and calculate accuracy
-            y_test_pred = model.predict(X_test)
-            test_model_score = accuracy_score(y_test, y_test_pred)
-
-            report[model_name] = test_model_score
-
-        return report
+            if score > best_score:
+                best_score = score
+                best_model_overall = best_model
+        
+        print(f"Returning best fitted model: {type(best_model_overall).__name__}")
+        return report, best_model_overall
 
     except Exception as e:
         raise CustomException(e, sys)

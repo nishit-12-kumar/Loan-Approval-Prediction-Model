@@ -23,10 +23,16 @@ if __name__ == "__main__":
 
         # Step 3: Model Training
         trainer = ModelTrainer()
-        model, score = trainer.initiate_model_trainer(train_arr, test_arr)
-        logging.info(f" Model training complete. Accuracy: {score:.4f}")
+        model, score_dict = trainer.initiate_model_trainer(train_arr, test_arr)
 
-        print(f" Final model accuracy: {score:.4f}")
+        best_model_name = max(score_dict, key=score_dict.get)
+        best_score = score_dict[best_model_name]
+
+
+        logging.info(f"Best Model: {best_model_name}, Accuracy: {best_score:.4f}")
+
+
+        # print(f" Final model accuracy: {score_:.4f}")
 
     except Exception as e:
         raise CustomException(e, sys)
