@@ -44,12 +44,13 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
             y_pred = best_model.predict(X_test)
             score = accuracy_score(y_test, y_pred)
             report[name] = score
+            print(f"model name: {name} and Accuracy Score: {score}")
 
             if score > best_score:
                 best_score = score
                 best_model_overall = best_model
         
-        print(f"Returning best fitted model: {type(best_model_overall).__name__}")
+        print(f"Returning best fitted model: {type(best_model_overall).__name__} with Accuracy Score: {best_score}")
         return report, best_model_overall
 
     except Exception as e:
