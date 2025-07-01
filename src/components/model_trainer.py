@@ -7,17 +7,16 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import GridSearchCV
-from sklearn.utils.validation import check_is_fitted
 
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object, evaluate_models
 
+
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path: str = os.path.join('artifacts', 'model.pkl')
+
 
 class ModelTrainer:
     def __init__(self):

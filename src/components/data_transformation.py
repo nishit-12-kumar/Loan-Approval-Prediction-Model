@@ -35,14 +35,12 @@ class DataTransformation:
             categorical_cols = ['Gender', 'Married', 'Dependents', 'Self_Employed',
                                 'Loan_Amount_Term', 'Credit_History']
 
+            #Filling Categorical NA values with mode of Column
             for col in categorical_cols:
                 df[col].fillna(df[col].mode()[0], inplace=True)
-
+            
+            #Filling Numerical NA values with Median of Column
             df['LoanAmount'].fillna(df['LoanAmount'].median(), inplace=True)
-
-            # Drop Loan_ID if exists
-            if 'Loan_ID' in df.columns:
-                df.drop('Loan_ID', axis=1, inplace=True)
 
             # Encode categorical variables
             encode_cols = ['Gender', 'Married', 'Dependents', 'Education',

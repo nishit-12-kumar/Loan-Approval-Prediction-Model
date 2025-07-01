@@ -36,11 +36,15 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
             if params.get(name):
                 gs = GridSearchCV(model, params[name], cv=3, n_jobs=-1)
                 gs.fit(X_train, y_train)
-                best_model = gs.best_estimator_
+
+                model.set_params(**gs.best_params_)     # set best hyperparameters
+                model.fit(X_train, y_train)             # retrain on full training data
+
             else:
                 model.fit(X_train, y_train)
-                best_model = model
 
+
+            best_model = model        
             y_pred = best_model.predict(X_test)
             score = accuracy_score(y_test, y_pred)
             report[name] = score
