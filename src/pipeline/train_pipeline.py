@@ -25,7 +25,6 @@ if __name__ == "__main__":
         trainer = ModelTrainer()
         model, score_dict = trainer.initiate_model_trainer(train_arr, test_arr)
 
-
         best_model_name = max(score_dict, key=score_dict.get)
         best_score = score_dict[best_model_name]
 

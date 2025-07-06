@@ -10,13 +10,13 @@ app = application
 
 @app.route('/')
 def index():
-    return render_template('index.html')  # basic welcome page
+    return render_template('index1.html')  # basic welcome page
 
 
 @app.route('/predictdata', methods=['GET', 'POST'])
 def predict_datapoint():
     if request.method == 'GET':
-        return render_template('home.html')  # form page
+        return render_template('home1.html')  # form page
 
     else:
         # Get user input
@@ -44,7 +44,7 @@ def predict_datapoint():
         # Convert prediction
         result = "Loan Approved " if pred[0] == 1 else "Loan Rejected "
 
-        return render_template('result.html', prediction=result)
+        return render_template('result1.html', prediction=result)
     
 
 if __name__ == "__main__":
