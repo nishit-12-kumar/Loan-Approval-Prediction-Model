@@ -158,4 +158,4 @@ Six classification models were trained and compared:
 
 👨‍💻 **Nishit Kumar**  
 🎓 B.Tech, NITK Surathkal  
-📧 nishitkumar2005@gmail.com  
+📧 nishitkumaroll12@gmail.com  
