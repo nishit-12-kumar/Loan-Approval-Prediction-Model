@@ -12,7 +12,8 @@ scikit-learn==1.3.2
 dill
 flask
 gunicorn
-
+setuptools
+wheel
 
 
 # -e .
