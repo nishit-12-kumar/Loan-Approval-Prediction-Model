@@ -32,7 +32,7 @@ This project predicts loan approval status (Yes/No) based on user input like inc
 
 ## Demo
 
-Live link : https://loan-approval-prediction-model-production-4265.up.railway.app/  
+Live link :
 Localhost example: `http://127.0.0.1:5000`
 
 ---
